@@ -9,52 +9,102 @@
   <script type="module" src="components/layout.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    /* main {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--bg-secondary, #f8f9fa);
-      color: var(--text-primary, #212529);
-      min-height: calc(100vh - 80px);
+    /* main.page-content {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+        Oxygen, Ubuntu, sans-serif;
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
+      min-height: calc(100vh - var(--header-height));
       padding: 2rem;
       box-sizing: border-box;
+      max-width: 960px;
+      margin: 0 auto;
     } */
+
     h2 {
-      margin-bottom: 1rem;
-      font-weight: 700;
-      color: var(--primary-color, #3a86ff);
-    }
-    .chart-container {
-      background: var(--bg-primary, #fff);
-      border-radius: 12px;
-      box-shadow: var(--shadow-sm);
-      padding: 1rem;
-      max-width: 900px;
       margin-bottom: 2rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      /* font-size: 2.25rem; */
+      /* letter-spacing: 0.015em; */
+      /* text-transform: uppercase; */
+      /* border-bottom: 2px solid var(--primary-color); */
+      padding-bottom: 0.5rem;
     }
+
+    .chart-container {
+      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-md);
+      padding: 2rem 2rem 3rem 2rem;
+      margin-bottom: 3rem;
+      transition: box-shadow 0.3s ease;
+    }
+    .chart-container:hover {
+      box-shadow: 0 12px 24px rgba(58, 134, 255, 0.3);
+    }
+
     canvas {
       width: 100% !important;
-      height: 300px !important;
+      height: 360px !important;
+      border-radius: var(--border-radius-sm);
+      background-color: var(--bg-primary);
+      box-shadow: var(--shadow-sm);
+      padding: 0.25rem;
     }
+
     @media (max-width: 768px) {
-      main {
+      main.page-content {
         padding: 1rem;
+      }
+
+      h2 {
+        font-size: 1.75rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .chart-container {
+        padding: 1.5rem 1.5rem 2rem 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      canvas {
+        height: 280px !important;
       }
     }
   </style>
 </head>
 <body>
   <layout-component>
-    <main class="page-content">
+    <main class="page-content" role="main" aria-label="Analytics Dashboard">
       <h2>Analytics</h2>
-      <div class="chart-container">
+      <div class="chart-container" aria-label="Bookings chart container">
         <canvas id="bookingChart" aria-label="Bookings over last 6 months" role="img"></canvas>
       </div>
-      <div class="chart-container">
+      <div class="chart-container" aria-label="Revenue chart container">
         <canvas id="revenueChart" aria-label="Monthly revenue over last 6 months" role="img"></canvas>
       </div>
     </main>
   </layout-component>
 
   <script>
+
+    function hexToRGBA(hex, alpha = 0.2) {
+  let c = hex.replace('#', '');
+  if (c.length === 3) {
+    c = c.split('').map(ch => ch + ch).join('');
+  }
+  const num = parseInt(c, 16);
+  const r = (num >> 16) & 255;
+  const g = (num >> 8) & 255;
+  const b = num & 255;
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+    const rootStyles = getComputedStyle(document.documentElement);
+    const primaryColor = rootStyles.getPropertyValue('--primary-color').trim() || '#3a86ff';
+    const primaryColorRGBA = hexToRGBA(primaryColor, 0.2);
+    const accentColor = rootStyles.getPropertyValue('--accent-color').trim() || '#ff006e';
+
     const bookingCtx = document.getElementById('bookingChart').getContext('2d');
     const bookingChart = new Chart(bookingCtx, {
       type: 'line',
@@ -63,22 +113,41 @@
         datasets: [{
           label: 'Bookings',
           data: [120, 150, 170, 140, 180, 200],
-          borderColor: 'var(--primary-color, #3a86ff)',
-          backgroundColor: 'rgba(58, 134, 255, 0.2)',
+          borderColor: primaryColor,
+          backgroundColor: primaryColorRGBA,
           fill: true,
-          tension: 0.3,
-          pointRadius: 4,
-          pointHoverRadius: 6,
+          tension: 0.4,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          pointBackgroundColor: primaryColor,
+          pointHoverBackgroundColor: '#fff',
+          borderWidth: 3,
+          cubicInterpolationMode: 'monotone',
         }]
       },
       options: {
         responsive: true,
         plugins: {
-          legend: { display: true },
+          legend: { display: true, labels: { color: rootStyles.getPropertyValue('--text-primary').trim() }},
           tooltip: { mode: 'index', intersect: false }
         },
         scales: {
-          y: { beginAtZero: true }
+          y: {
+            beginAtZero: true,
+            grid: {
+              color: 'rgba(0,0,0,0.05)',
+              borderDash: [5, 5]
+            },
+            ticks: {
+              color: rootStyles.getPropertyValue('--text-secondary').trim()
+            }
+          },
+          x: {
+            grid: { display: false },
+            ticks: {
+              color: rootStyles.getPropertyValue('--text-secondary').trim()
+            }
+          }
         }
       }
     });
@@ -91,18 +160,34 @@
         datasets: [{
           label: 'Revenue ($)',
           data: [15000, 18000, 22000, 20000, 25000, 27000],
-          backgroundColor: 'var(--accent-color, #ff006e)',
-          borderRadius: 6,
+          backgroundColor: accentColor,
+          borderRadius: 8,
+          maxBarThickness: 40,
         }]
       },
       options: {
         responsive: true,
         plugins: {
-          legend: { display: true },
+          legend: { display: true, labels: { color: rootStyles.getPropertyValue('--text-primary').trim() }},
           tooltip: { mode: 'index', intersect: false }
         },
         scales: {
-          y: { beginAtZero: true }
+          y: {
+            beginAtZero: true,
+            grid: {
+              color: 'rgba(0,0,0,0.05)',
+              borderDash: [5, 5]
+            },
+            ticks: {
+              color: rootStyles.getPropertyValue('--text-secondary').trim()
+            }
+          },
+          x: {
+            grid: { display: false },
+            ticks: {
+              color: rootStyles.getPropertyValue('--text-secondary').trim()
+            }
+          }
         }
       }
     });
