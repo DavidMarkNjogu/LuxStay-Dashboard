@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hotel Booking Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/admin.css" />
+    <script defer src="components/layout.js"></script>
+    <!-- <link rel="stylesheet" href="responsive.css" /> Uncomment if needed -->
+</head>
+<body>
+    <layout-component></layout-component>
+        <main class="page-content">
+            <!-- Dashboard Content -->
+
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-bed"></i></div>
+                    <div class="stat-info">
+                        <h3>142</h3>
+                        <p>Total Rooms</p>
+                    </div>
+                    <span class="stat-trend up">+12%</span>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
+                    <div class="stat-info">
+                        <h3>86</h3>
+                        <p>Today's Bookings</p>
+                    </div>
+                    <span class="stat-trend up">+5%</span>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    <div class="stat-info">
+                        <h3>254</h3>
+                        <p>Total Guests</p>
+                    </div>
+                    <span class="stat-trend up">+8%</span>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-dollar-sign"></i></div>
+                    <div class="stat-info">
+                        <h3>$24,589</h3>
+                        <p>Revenue</p>
+                    </div>
+                    <span class="stat-trend up">+15%</span>
+                </div>
+            </section>
+
+            <section class="data-section">
+                <div class="chart-container">
+                    <div class="section-header">
+                        <h2>Booking Trends</h2>
+                        <select>
+                            <option>Last 7 Days</option>
+                            <option>Last 30 Days</option>
+                            <option>Last 90 Days</option>
+                        </select>
+                    </div>
+                    <div class="chart-placeholder">
+                        <img src="https://placeholder-image-service.onrender.com/image/600x300?prompt=Line-chart-showing-hotel-booking-trends-over-time&id=chart-1&customer_id=cus_TAQlaqlRem2vHz" alt="Line chart visualization of hotel booking trends over time" />
+                    </div>
+                </div>
+
+                <div class="recent-bookings">
+                    <div class="section-header">
+                        <h2>Recent Bookings</h2>
+                        <a href="bookings.html" class="view-all">View All</a>
+                    </div>
+                    <div class="bookings-list">
+                        <div class="booking-item">
+                            <div class="booking-info">
+                                <h4>Premium Suite</h4>
+                                <p>James Wilson · Sep 12 - Sep 15</p>
+                            </div>
+                            <div class="booking-status confirmed">Confirmed</div>
+                            <div class="booking-amount">$420</div>
+                        </div>
+
+                        <div class="booking-item">
+                            <div class="booking-info">
+                                <h4>Deluxe Room</h4>
+                                <p>Emma Thompson · Sep 13 - Sep 16</p>
+                            </div>
+                            <div class="booking-status pending">Pending</div>
+                            <div class="booking-amount">$290</div>
+                        </div>
+
+                        <div class="booking-item">
+                            <div class="booking-info">
+                                <h4>Family Suite</h4>
+                                <p>Robert Garcia · Sep 14 - Sep 18</p>
+                            </div>
+                            <div class="booking-status confirmed">Confirmed</div>
+                            <div class="booking-amount">$650</div>
+                        </div>
+
+                        <div class="booking-item">
+                            <div class="booking-info">
+                                <h4>Standard Room</h4>
+                                <p>Lisa Chen · Sep 15 - Sep 17</p>
+                            </div>
+                            <div class="booking-status cancelled">Cancelled</div>
+                            <div class="booking-amount">$180</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="room-status">
+                <div class="section-header">
+                    <h2>Room Status</h2>
+                </div>
+                <div class="status-cards">
+                    <div class="status-card available">
+                        <h3>64</h3>
+                        <p>Available Rooms</p>
+                    </div>
+                    <div class="status-card occupied">
+                        <h3>58</h3>
+                        <p>Occupied Rooms</p>
+                    </div>
+                    <div class="status-card maintenance">
+                        <h3>12</h3>
+                        <p>Maintenance</p>
+                    </div>
+                    <div class="status-card cleaning">
+                        <h3>8</h3>
+                        <p>Cleaning</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+
+    <script src="assets/js/script_new.js"></script>
+    <!-- <script src="script.js"></script> -->
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rooms - LuxStay Admin</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/admin.css" />
+  <script type="module" src="components/layout.js"></script>
+  <style>
+    /* main {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-secondary, #f8f9fa);
+      color: var(--text-primary, #212529);
+      min-height: calc(100vh - 80px);
+      padding: 2rem;
+      box-sizing: border-box;
+    } */
+    h2 {
+      margin-bottom: 1rem;
+      font-weight: 700;
+      color: var(--primary-color, #3a86ff);
+    }
+    .room-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
+      gap: 1.5rem;
+    }
+    .room-card {
+      background: var(--bg-primary, #fff);
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .room-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+    .room-name {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--text-primary);
+    }
+    .room-details {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+    .room-status {
+      margin-top: auto;
+      font-weight: 600;
+      color: var(--success-color);
+    }
+    .room-status.unavailable {
+      color: var(--danger-color);
+    }
+    @media (max-width: 768px) {
+      main {
+        padding: 1rem;
+      }
+      .room-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <layout-component></layout-component>
+    <main class="page-content">
+      <h2>Rooms</h2>
+      <div class="room-list">
+        <div class="room-card">
+          <img src="https://via.placeholder.com/280x160?text=Deluxe+Suite" alt="Deluxe Suite" />
+          <div class="room-name">Deluxe Suite</div>
+          <div class="room-details">2 Beds, Sea View, 45m²</div>
+          <div class="room-status">Available</div>
+        </div>
+        <div class="room-card">
+          <img src="https://via.placeholder.com/280x160?text=Standard+Room" alt="Standard Room" />
+          <div class="room-name">Standard Room</div>
+          <div class="room-details">1 Bed, City View, 25m²</div>
+          <div class="room-status unavailable">Unavailable</div>
+        </div>
+        <!-- More room cards -->
+      </div>
+    </main>
+</body>
+</html>

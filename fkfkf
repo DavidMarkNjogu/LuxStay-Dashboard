@@ -1,0 +1,40 @@
+
+class AdminHeader extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({mode: 'open'});
+    this.shadowRoot.innerHTML = `
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      :host {} 
+        // CSS STYLES HERE
+      </style> 
+     <nav>
+        //NAV HTML CONTENT HERE  
+    </nav>
+    `;
+
+    this.sidebar = this.shadowRoot.querySelector('nav.sidebar');
+    this.toggleBtn = this.shadowRoot.querySelector('button.toggle-btn');
+
+    this.toggleBtn.addEventListener('click', () => {
+      if(window.innerWidth <= 768){
+        this.sidebar.classList.toggle('open');
+      } else {
+        this.sidebar.classList.toggle('collapsed');
+        document.querySelector('main.admin-content').classList.toggle('sidebar-collapsed');
+      }
+    });
+
+    this.shadowRoot.querySelectorAll('nav.sidebar li').forEach(li => {
+      li.addEventListener('click', () => {
+        const link = li.getAttribute('data-link');
+        if(link) window.location.href = link;
+      });
+    });
+  }
+}
+
+customElements.define('admin-header', AdminHeader);
+

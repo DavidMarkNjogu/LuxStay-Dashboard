@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profile - LuxStay Admin</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/admin.css" />
+  <script type="module" src="components/layout.js"></script>
+  <style>
+    /* main {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
+      min-height: calc(100vh - var(--header-height));
+      padding: 2rem;
+      box-sizing: border-box;
+      transition: var(--transition);
+      max-width: 600px;
+      margin: 0 auto;
+    } */
+
+    h2 {
+      color: var(--primary-color);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    label {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    input, select {
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      border-radius: var(--border-radius-sm);
+      border: 1px solid var(--border-color);
+      outline: none;
+      transition: border-color 0.3s ease;
+      color: var(--text-primary);
+    }
+
+    input:focus, select:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.2);
+    }
+
+    button {
+      background-color: var(--primary-color);
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: var(--border-radius-sm);
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      align-self: start;
+    }
+
+    button:hover {
+      background-color: var(--accent-color);
+    }
+  </style>
+</head>
+<body>
+  <layout-component></layout-component>
+    <main class="page-content">
+      <h2>Profile</h2>
+      <form>
+        <label for="fullname">Full Name</label>
+        <input id="fullname" name="fullname" type="text" placeholder="Enter your full name" required />
+
+        <label for="email">Email Address</label>
+        <input id="email" name="email" type="email" placeholder="Enter your email" required />
+
+        <label for="phone">Phone Number</label>
+        <input id="phone" name="phone" type="tel" placeholder="Enter your phone number" />
+
+        <label for="role">Role</label>
+        <select id="role" name="role" required>
+          <option value="">Select role</option>
+          <option value="admin">Administrator</option>
+          <option value="staff">Staff</option>
+        </select>
+
+        <button type="submit">Save Profile</button>
+      </form>
+    </main>
+</body>
+</html>

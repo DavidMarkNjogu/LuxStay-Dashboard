@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profile - LuxStay Admin</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/admin.css" />
+  <script type="module" src="components/layout.js"></script>
+    <style>
+        .settings-section {
+  max-width: 600px;
+  margin: 2rem auto 2rem 0rem;
+  padding: 2rem;
+  background-color: var(--bg-primary);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, sans-serif;
+}
+
+.settings-section h1 {
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--primary-color);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+input[type='text'],
+select {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: var(--transition);
+  box-sizing: border-box;
+}
+
+input[type='text']:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.15);
+}
+
+input[type='checkbox'] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+}
+
+.form-text {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 0.25rem;
+  user-select: none;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border: none;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: var(--transition);
+  user-select: none;
+  align-self: flex-start;
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-color);
+}
+.settings-note {
+  font-size: 0.875rem;
+  color: var(--primary-color);
+  opacity: 0.65;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+  font-style: italic;
+  user-select: none;
+  transition: opacity 0.3s ease;
+}
+
+.settings-note:hover {
+  opacity: 1;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .settings-section {
+    margin: 1rem;
+    padding: 1rem;
+  }
+}
+
+    </style>
+</head>
+<body>
+  <layout-component></layout-component>
+<main class="page-content">
+  <section class="settings-section">
+    <h1>Settings</h1>
+
+    <form id="settingsForm">
+      <div class="form-group">
+        <label for="siteTitle">Site Title</label>
+        <input type="text" id="siteTitle" name="siteTitle" value="LuxStay Admin" />
+        <small class="form-text">Set the title displayed in the header.</small>
+      </div>
+
+      <div class="form-group">
+        <label for="emailNotifications">Email Notifications</label>
+        <select id="emailNotifications" name="emailNotifications">
+          <option value="all">Receive All Emails</option>
+          <option value="important">Only Important</option>
+          <option value="none">Disable Email Notifications</option>
+        </select>
+        <small class="form-text">Choose your email notification preferences.</small>
+      </div>
+
+      <div class="form-group">
+        <label for="defaultLanguage">Default Language</label>
+        <select id="defaultLanguage" name="defaultLanguage">
+          <option value="en" selected>English</option>
+          <option value="fr">French</option>
+          <option value="es">Spanish</option>
+          <option value="de">German</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="timezone">Timezone</label>
+        <select id="timezone" name="timezone">
+          <option value="UTC" selected>UTC</option>
+          <option value="PST">Pacific Standard Time (PST)</option>
+          <option value="EST">Eastern Standard Time (EST)</option>
+          <!-- add relevant timezones -->
+        </select>
+      </div>
+
+          <div class="theme-toggle">
+            <span>Theme</span>
+            <label class="switch">
+              <input type="checkbox" id="themeToggle" aria-label="Toggle theme" />
+              <span class="slider"></span>
+            </label>
+          </div>
+
+      <button type="submit" class="btn-primary">Save Changes</button>
+    </form>
+    <p class="settings-note">
+        <em>Note:</em> An update enabling changes to theme colors and fonts is coming soon.
+    </p>
+
+  </section>
+</main>
+
+<script src="assets/js/script_new.js"></script>
+</body>
+</html>

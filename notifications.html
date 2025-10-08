@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Notifications - LuxStay Admin</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/admin.css" />
+  <script type="module" src="components/layout.js"></script>
+  <style>
+    /* main {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-secondary, #f8f9fa);
+      color: var(--text-primary, #212529);
+      min-height: calc(100vh - 80px);
+      padding: 2rem;
+      box-sizing: border-box;
+    } */
+    h2 {
+      margin-bottom: 1rem;
+      font-weight: 700;
+      color: var(--primary-color, #3a86ff);
+    }
+    .notification-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      max-width: 700px;
+    }
+    .notification-item {
+      background: var(--bg-primary, #fff);
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+      padding: 1rem;
+      margin-bottom: 1rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .notification-item:hover {
+      background-color: var(--bg-tertiary, #e9ecef);
+    }
+    .notification-icon {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      flex-shrink: 0;
+    }
+    .notification-content {
+      flex: 1;
+    }
+    .notification-title {
+      font-weight: 600;
+      margin: 0 0 0.25rem 0;
+    }
+    .notification-time {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+    @media (max-width: 768px) {
+      main {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <layout-component></layout-component>
+    <main class="page-content">
+      <h2>Notifications</h2>
+      <ul class="notification-list" role="list">
+        <li class="notification-item" tabindex="0" role="listitem" aria-label="New booking confirmed for John Doe">
+          <div class="notification-icon"><i class="fas fa-calendar-check"></i></div>
+          <div class="notification-content">
+            <p class="notification-title">New booking confirmed for John Doe</p>
+            <p class="notification-time">2 hours ago</p>
+          </div>
+        </li>
+        <li class="notification-item" tabindex="0" role="listitem" aria-label="Room 101 marked as unavailable">
+          <div class="notification-icon"><i class="fas fa-bed"></i></div>
+          <div class="notification-content">
+            <p class="notification-title">Room 101 marked as unavailable</p>
+            <p class="notification-time">5 hours ago</p>
+          </div>
+        </li>
+        <!-- More notifications -->
+      </ul>
+    </main>
+</body>
+</html>

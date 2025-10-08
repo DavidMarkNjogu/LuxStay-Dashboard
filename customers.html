@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Customers - LuxStay Admin</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/admin.css" />
+  <script type="module" src="components/layout.js"></script>
+  <style>
+    /* main {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-secondary, #f8f9fa);
+      color: var(--text-primary, #212529);
+      min-height: calc(100vh - 80px);
+      padding: 2rem;
+      box-sizing: border-box;
+    } */
+    h2 {
+      margin-bottom: 1rem;
+      font-weight: 700;
+      color: var(--primary-color, #3a86ff);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--bg-primary, #fff);
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+    th, td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color, #dee2e6);
+    }
+    th {
+      background-color: var(--bg-tertiary, #e9ecef);
+      font-weight: 600;
+    }
+    tr:hover {
+      background-color: var(--bg-secondary, #f8f9fa);
+    }
+    @media (max-width: 768px) {
+      main {
+        padding: 1rem;
+      }
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+      thead tr {
+        display: none;
+      }
+      tr {
+        margin-bottom: 1rem;
+        border-bottom: 2px solid var(--border-color, #dee2e6);
+      }
+      td {
+        padding-left: 50%;
+        position: relative;
+        text-align: right;
+      }
+      td::before {
+        position: absolute;
+        top: 0;
+        left: 1rem;
+        width: 45%;
+        padding-left: 0.5rem;
+        white-space: nowrap;
+        font-weight: 600;
+        text-align: left;
+        content: attr(data-label);
+        color: var(--text-secondary, #6c757d);
+      }
+    }
+  </style>
+</head>
+<body>
+  <layout-component></layout-component>
+    <main class="page-content">
+      <h2>Customers</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Customer ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Member Since</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Customer ID">CUST001</td>
+            <td data-label="Name">Alice Brown</td>
+            <td data-label="Email">alice.brown@example.com</td>
+            <td data-label="Phone">+1 555 123 4567</td>
+            <td data-label="Member Since">2021-05-10</td>
+          </tr>
+          <tr>
+            <td data-label="Customer ID">CUST002</td>
+            <td data-label="Name">Bob Green</td>
+            <td data-label="Email">bob.green@example.com</td>
+            <td data-label="Phone">+1 555 987 6543</td>
+            <td data-label="Member Since">2022-01-22</td>
+          </tr>
+          <!-- More rows -->
+        </tbody>
+      </table>
+    </main>
+</body>
+</html>
